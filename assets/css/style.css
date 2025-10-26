@@ -1,5 +1,5 @@
 /**
- * URL Exporter Modal Styles
+ * URL Exporter Modal Styles - Modern Design
  */
 
 /* Prevent body scroll when modal is open */
@@ -20,121 +20,222 @@ body.url-exporter-modal-open {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    backdrop-filter: blur(0px);
 }
 
 .url-exporter-modal.show {
-    pointer-events: auto;
+        pointer-events: auto;
     opacity: 1;
-}
+    backdrop-filter: blur(4px);
+    }
 
-/* Modal overlay */
-.url-exporter-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+/* Modal overlay with gradient */
+    .url-exporter-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(156, 39, 176, 0.1) 100%);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 99998;
     cursor: pointer;
+    animation: overlayFadeIn 0.3s ease-out;
 }
 
-/* Modal content */
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal content with modern design */
 .url-exporter-modal-content {
-    background-color: #fff;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 16px;
     width: 90%;
-    max-width: 900px;
-    max-height: 85vh;
+    max-width: 950px;
+    max-height: 90vh;
     z-index: 99999;
     position: relative;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
-/* Modal header */
+/* Modal header with gradient */
 .url-exporter-modal-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid #ddd;
+    padding: 24px 28px;
+    border-bottom: 2px solid transparent;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f9f9f9;
-    border-radius: 8px 8px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.url-exporter-modal-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shimmerHeader 3s infinite;
+}
+
+@keyframes shimmerHeader {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .url-exporter-modal-header h2 {
     margin: 0;
-    font-size: 20px;
-    font-weight: 600;
-    color: #23282d;
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.url-exporter-modal-header h2::before {
+    content: '📋';
+    font-size: 24px;
+    animation: iconBounce 2s infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
 }
 
 .url-exporter-close {
-    background: transparent;
-    border: none;
-    font-size: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    font-size: 24px;
     line-height: 1;
-    color: #666;
+    color: #ffffff;
     cursor: pointer;
     padding: 0;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    transition: all 0.2s;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
 }
 
 .url-exporter-close:hover {
-    background-color: #f0f0f0;
-    color: #000;
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Progress section */
+/* Progress section with modern design */
 .url-exporter-progress {
-    padding: 20px 24px;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
+    padding: 24px 28px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
 }
 
 .progress-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .progress-text {
-    font-size: 14px;
-    color: #23282d;
-    font-weight: 500;
+    font-size: 15px;
+    color: #2d3748;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-text::before {
+    content: '⚡';
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
 }
 
 .progress-count {
-    font-size: 13px;
-    color: #646970;
-    font-weight: 600;
+    font-size: 14px;
+    color: #667eea;
+    font-weight: 700;
+    background: rgba(102, 126, 234, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
 .progress-bar-wrapper {
     width: 100%;
-    height: 24px;
-    background-color: #e0e0e0;
-    border-radius: 12px;
+    height: 28px;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0f4ff 100%);
+    border-radius: 14px;
     overflow: hidden;
     position: relative;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(102, 126, 234, 0.2);
 }
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #2271b1, #135e96);
-    transition: width 0.3s ease;
-    border-radius: 12px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+    background-size: 200% 100%;
+    animation: gradientSlide 2s linear infinite;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 14px;
     position: relative;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+@keyframes gradientSlide {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 200% 50%;
+    }
 }
 
 .progress-bar::after {
@@ -147,10 +248,10 @@ body.url-exporter-modal-open {
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.4),
         transparent
     );
-    animation: shimmer 1.5s infinite;
+    animation: shimmer 1.2s infinite;
 }
 
 @keyframes shimmer {
@@ -170,29 +271,104 @@ body.url-exporter-modal-open {
     min-height: 200px;
 }
 
-/* Modal footer */
+/* Modal footer with modern buttons */
 .url-exporter-modal-footer {
-    padding: 16px 24px;
-    border-top: 1px solid #ddd;
+    padding: 20px 28px;
+    border-top: 2px solid rgba(102, 126, 234, 0.1);
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
-    background-color: #f9f9f9;
-    border-radius: 0 0 8px 8px;
+    gap: 12px;
+    background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
 }
 
-/* Info section */
+.url-exporter-modal-footer .button {
+    padding: 10px 24px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.url-exporter-modal-footer .button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.url-exporter-modal-footer .button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.url-exporter-modal-footer .url-exporter-copy-all {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.url-exporter-modal-footer .url-exporter-copy-all:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.url-exporter-modal-footer .button-primary {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.url-exporter-modal-footer .button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+}
+
+/* Info section with modern card design */
 .url-exporter-info {
-    background-color: #f0f6fc;
-    border: 1px solid #c3d8f0;
-    border-radius: 4px;
-    padding: 12px 16px;
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, #f0f6fc 0%, #e6f2ff 100%);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.url-exporter-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
 }
 
 .url-exporter-info p {
-    margin: 6px 0;
-    color: #1d2327;
+    margin: 8px 0;
+    color: #2d3748;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.url-exporter-info p strong {
+    color: #667eea;
+    font-weight: 700;
 }
 
 /* Table wrapper */
@@ -200,63 +376,120 @@ body.url-exporter-modal-open {
     overflow-x: auto;
 }
 
-/* Table styles */
+/* Table styles with modern design */
 .url-exporter-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .url-exporter-table thead {
-    background-color: #f9f9f9;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .url-exporter-table th {
-    text-align: right;
-    padding: 12px;
-    font-weight: 600;
-    color: #23282d;
-    border-bottom: 2px solid #ddd;
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
 }
 
 .url-exporter-table td {
-    padding: 12px;
-    border-bottom: 1px solid #f0f0f0;
+    padding: 14px 16px;
+    border-bottom: 1px solid #e2e8f0;
     vertical-align: middle;
+    transition: all 0.2s ease;
+}
+
+.url-exporter-table tbody tr {
+    transition: all 0.3s ease;
 }
 
 .url-exporter-table tbody tr:hover {
-    background-color: #f9f9f9;
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.url-exporter-table tbody tr:last-child td {
+    border-bottom: none;
 }
 
 .url-exporter-table .column-title {
-    font-weight: 500;
+    font-weight: 600;
     width: 30%;
+    color: #2d3748;
 }
 
 .url-exporter-table .column-url {
     width: 40%;
     word-break: break-all;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
 }
 
 .url-exporter-table .column-url a {
-    color: #2271b1;
+    color: #667eea;
     text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    padding: 2px 0;
+}
+
+.url-exporter-table .column-url a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transition: width 0.3s ease;
 }
 
 .url-exporter-table .column-url a:hover {
-    color: #135e96;
-    text-decoration: underline;
+    color: #764ba2;
+}
+
+.url-exporter-table .column-url a:hover::after {
+    width: 100%;
 }
 
 .url-exporter-table .column-date {
     width: 15%;
-    color: #646970;
+    color: #718096;
+    font-size: 13px;
 }
 
 .url-exporter-table .column-actions {
     width: 15%;
     text-align: center;
+}
+
+.url-exporter-table .column-actions .button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3);
+}
+
+.url-exporter-table .column-actions .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
 /* Loading state */
@@ -365,18 +598,65 @@ body.rtl .url-exporter-modal-footer {
     justify-content: flex-start;
 }
 
-/* Animation improvements */
+/* Enhanced animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.95) translateY(-20px);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(1) translateY(0);
     }
 }
 
 .url-exporter-modal.show .url-exporter-modal-content {
-    animation: fadeIn 0.2s ease-out;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scroll for table */
+.url-exporter-table-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: #667eea #e2e8f0;
+}
+
+.url-exporter-table-wrapper::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.url-exporter-table-wrapper::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 4px;
+}
+
+.url-exporter-table-wrapper::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+}
+
+.url-exporter-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #764ba2 0%, #667eea 100%);
+}
+
+/* Fade in animation for table rows */
+.url-exporter-table tbody tr {
+    animation: rowFadeIn 0.5s ease-out backwards;
+}
+
+.url-exporter-table tbody tr:nth-child(1) { animation-delay: 0.05s; }
+.url-exporter-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+.url-exporter-table tbody tr:nth-child(3) { animation-delay: 0.15s; }
+.url-exporter-table tbody tr:nth-child(4) { animation-delay: 0.2s; }
+.url-exporter-table tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes rowFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
