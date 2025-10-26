@@ -19,24 +19,68 @@ msgstr ""
 msgid "Export URLs"
 msgstr ""
 
-#: url-exporter.php:106
+#: url-exporter.php:129
+msgid "Loading..."
+msgstr ""
+
+#: url-exporter.php:130
 msgid "Loading URLs..."
 msgstr ""
 
-#: url-exporter.php:107
+#: url-exporter.php:131
 msgid "Error loading URLs"
 msgstr ""
 
-#: url-exporter.php:108
+#: url-exporter.php:132
 msgid "No posts found"
 msgstr ""
 
-#: url-exporter.php:109
+#: url-exporter.php:133
 msgid "URL List"
 msgstr ""
 
-#: url-exporter.php:110
+#: url-exporter.php:134
 msgid "URL"
+msgstr ""
+
+#: url-exporter.php:135
+msgid "Copy All"
+msgstr ""
+
+#: url-exporter.php:136
+msgid "Close"
+msgstr ""
+
+#: url-exporter.php:137
+msgid "Copy"
+msgstr ""
+
+#: url-exporter.php:138
+msgid "Copied"
+msgstr ""
+
+#: url-exporter.php:139
+msgid "Category"
+msgstr ""
+
+#: url-exporter.php:140
+msgid "Total Posts"
+msgstr ""
+
+#: url-exporter.php:141
+msgid "Title"
+msgstr ""
+
+#: url-exporter.php:143
+msgid "Date"
+msgstr ""
+
+#: url-exporter.php:144
+msgid "Actions"
+msgstr ""
+
+#: url-exporter.php:145
+msgid "Some data could not be loaded. Showing %1$d of %2$d items."
 msgstr ""
 
 #: url-exporter.php:146 url-exporter.php:211

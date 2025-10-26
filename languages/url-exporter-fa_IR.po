@@ -25,25 +25,69 @@ msgstr ""
 msgid "Export URLs"
 msgstr "دریافت آدرس‌ها"
 
-#: url-exporter.php:121
+#: url-exporter.php:129
+msgid "Loading..."
+msgstr "در حال بارگذاری..."
+
+#: url-exporter.php:130
 msgid "Loading URLs..."
-msgstr "در حال بارگذاری مسیرها"
+msgstr "در حال بارگذاری آدرس‌ها..."
 
-#: url-exporter.php:122
+#: url-exporter.php:131
 msgid "Error loading URLs"
-msgstr "خطا در هنگام بارگذاری مسیرها"
+msgstr "خطا در بارگذاری آدرس‌ها"
 
-#: url-exporter.php:123
+#: url-exporter.php:132
 msgid "No posts found"
 msgstr "مطلبی یافت نشد"
 
-#: url-exporter.php:124
+#: url-exporter.php:133
 msgid "URL List"
-msgstr "لیست مسیرها"
+msgstr "لیست آدرس‌ها"
 
-#: url-exporter.php:125
+#: url-exporter.php:134
 msgid "URL"
-msgstr "مسیر"
+msgstr "آدرس"
+
+#: url-exporter.php:135
+msgid "Copy All"
+msgstr "کپی همه"
+
+#: url-exporter.php:136
+msgid "Close"
+msgstr "بستن"
+
+#: url-exporter.php:137
+msgid "Copy"
+msgstr "کپی"
+
+#: url-exporter.php:138
+msgid "Copied"
+msgstr "کپی شد"
+
+#: url-exporter.php:139
+msgid "Category"
+msgstr "دسته‌بندی"
+
+#: url-exporter.php:140
+msgid "Total Posts"
+msgstr "تعداد مطالب"
+
+#: url-exporter.php:141
+msgid "Title"
+msgstr "عنوان"
+
+#: url-exporter.php:143
+msgid "Date"
+msgstr "تاریخ"
+
+#: url-exporter.php:144
+msgid "Actions"
+msgstr "عملیات"
+
+#: url-exporter.php:145
+msgid "Some data could not be loaded. Showing %1$d of %2$d items."
+msgstr "برخی داده‌ها بارگذاری نشدند. نمایش %1$d از %2$d مورد."
 
 #: url-exporter.php:161 url-exporter.php:226
 msgid "You do not have permission to access this section"

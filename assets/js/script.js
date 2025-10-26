@@ -42,8 +42,8 @@
         createModal: function () {
             const modalHTML = `
                 <div class="url-exporter-modal" style="display: none;">
-                    <div class="url-exporter-modal-overlay"></div>
-                    <div class="url-exporter-modal-content">
+            <div class="url-exporter-modal-overlay"></div>
+            <div class="url-exporter-modal-content">
                         <div class="url-exporter-modal-header">
                             <h2>${UrlExporter.i18n.title}</h2>
                             <button type="button" class="url-exporter-close">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="url-exporter-progress" style="display: none;">
                             <div class="progress-info">
-                                <span class="progress-text">Loading...</span>
+                                <span class="progress-text">${UrlExporter.i18n.loading}</span>
                                 <span class="progress-count">0 / 0</span>
                             </div>
                             <div class="progress-bar-wrapper">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="url-exporter-modal-body"></div>
                         <div class="url-exporter-modal-footer">
-                            <button type="button" class="button url-exporter-copy-all">Copy All</button>
+                            <button type="button" class="button url-exporter-copy-all">${UrlExporter.i18n.copyAll}</button>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
 
             // Export URLs trigger
             $(document).on('click', '.url-exporter-trigger', function (e) {
-                e.preventDefault();
+            e.preventDefault();
 
                 const taxonomy = $(this).data('taxonomy');
                 const termId = $(this).data('term-id');
@@ -104,7 +104,7 @@
 
             // Copy all URLs
             this.$modal.on('click', '.url-exporter-copy-all', function (e) {
-                e.preventDefault();
+            e.preventDefault();
                 self.copyAllURLs();
             });
 
@@ -283,7 +283,10 @@
                             count: self.currentExport.allUrls.length,
                             term: self.currentExport.termName
                         });
-                        self.showWarning('Some data could not be loaded. Showing ' + self.currentExport.allUrls.length + ' of ' + self.currentExport.totalCount + ' items.');
+                        const warningMsg = UrlExporter.i18n.partialLoad
+                            .replace('%1$d', self.currentExport.allUrls.length)
+                            .replace('%2$d', self.currentExport.totalCount);
+                        self.showWarning(warningMsg);
                     } else {
                         self.showError(UrlExporter.i18n.error);
                     }
@@ -317,7 +320,7 @@
 
             this.$modal.find('.progress-bar').css('width', percentage + '%');
             this.$modal.find('.progress-count').text(loaded + ' / ' + total);
-            this.$modal.find('.progress-text').text('Loading... (' + percentage + '%)');
+            this.$modal.find('.progress-text').text(UrlExporter.i18n.loading + ' (' + percentage + '%)');
         },
 
         /**
@@ -327,7 +330,7 @@
             const warningHTML = `
                 <div class="url-exporter-warning">
                     <span class="dashicons dashicons-info"></span>
-                    <p>${message}</p>
+                    <p>${this.escapeHtml(message)}</p>
                 </div>
             `;
             this.$modal.find('.url-exporter-modal-body').prepend(warningHTML);
@@ -348,17 +351,17 @@
 
             let html = `
                 <div class="url-exporter-info">
-                    <p><strong>Category:</strong> ${this.escapeHtml(termName)}</p>
-                    <p><strong>Total Posts:</strong> ${count}</p>
+                    <p><strong>${UrlExporter.i18n.category}:</strong> ${this.escapeHtml(termName)}</p>
+                    <p><strong>${UrlExporter.i18n.totalPosts}:</strong> ${count}</p>
                 </div>
                 <div class="url-exporter-table-wrapper">
                     <table class="url-exporter-table wp-list-table widefat fixed striped">
                         <thead>
                             <tr>
-                                <th class="column-title">Title</th>
-                                <th class="column-url">URL</th>
-                                <th class="column-date">Date</th>
-                                <th class="column-actions">Actions</th>
+                                <th class="column-title">${UrlExporter.i18n.titleColumn}</th>
+                                <th class="column-url">${UrlExporter.i18n.urlColumn}</th>
+                                <th class="column-date">${UrlExporter.i18n.dateColumn}</th>
+                                <th class="column-actions">${UrlExporter.i18n.actionsColumn}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -376,7 +379,7 @@
                         <td class="column-date">${this.escapeHtml(item.date)}</td>
                         <td class="column-actions">
                             <button type="button" class="button button-small url-exporter-copy" data-url="${this.escapeHtml(item.url)}">
-                                Copy
+                                ${UrlExporter.i18n.copy}
                             </button>
                         </td>
                     </tr>
@@ -465,7 +468,7 @@
         showCopySuccess: function ($button) {
             if ($button && $button.length) {
                 const originalText = $button.text();
-                $button.text('✓ Copied').prop('disabled', true);
+                $button.text('✓ ' + UrlExporter.i18n.copied).prop('disabled', true);
 
                 setTimeout(() => {
                     $button.text(originalText).prop('disabled', false);

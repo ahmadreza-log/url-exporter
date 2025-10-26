@@ -126,11 +126,23 @@ class URL_Exporter {
             'ajaxurl' => admin_url('admin-ajax.php'),
             'nonce'   => wp_create_nonce('url_exporter_nonce'),
             'i18n'    => [
-                'loading'    => __('Loading URLs...', 'url-exporter'),
-                'error'      => __('Error loading URLs', 'url-exporter'),
-                'noResults'  => __('No posts found', 'url-exporter'),
-                'title'      => __('URL List', 'url-exporter'),
-                'urlHeader'  => __('URL', 'url-exporter'),
+                'loading'       => __('Loading...', 'url-exporter'),
+                'loadingUrls'   => __('Loading URLs...', 'url-exporter'),
+                'error'         => __('Error loading URLs', 'url-exporter'),
+                'noResults'     => __('No posts found', 'url-exporter'),
+                'title'         => __('URL List', 'url-exporter'),
+                'urlHeader'     => __('URL', 'url-exporter'),
+                'copyAll'       => __('Copy All', 'url-exporter'),
+                'close'         => __('Close', 'url-exporter'),
+                'copy'          => __('Copy', 'url-exporter'),
+                'copied'        => __('Copied', 'url-exporter'),
+                'category'      => __('Category', 'url-exporter'),
+                'totalPosts'    => __('Total Posts', 'url-exporter'),
+                'titleColumn'   => __('Title', 'url-exporter'),
+                'urlColumn'     => __('URL', 'url-exporter'),
+                'dateColumn'    => __('Date', 'url-exporter'),
+                'actionsColumn' => __('Actions', 'url-exporter'),
+                'partialLoad'   => __('Some data could not be loaded. Showing %1$d of %2$d items.', 'url-exporter'),
             ]
         ]);
         
