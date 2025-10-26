@@ -14,6 +14,9 @@
 
 defined('ABSPATH') || exit;
 
+// Load updater class
+require_once plugin_dir_path(__FILE__) . 'includes/class-updater.php';
+
 /**
  * Main URL Exporter Class
  */
@@ -303,4 +306,9 @@ class URL_Exporter {
 }
 
 // Initialize the plugin
-new URL_Exporter();
+$url_exporter = new URL_Exporter();
+
+// Initialize updater
+if (is_admin()) {
+    new URL_Exporter_Updater(__FILE__);
+}
