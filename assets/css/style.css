@@ -1,0 +1,382 @@
+/**
+ * URL Exporter Modal Styles
+ */
+
+/* Prevent body scroll when modal is open */
+body.url-exporter-modal-open {
+    overflow: hidden;
+}
+
+/* Modal container */
+.url-exporter-modal {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.url-exporter-modal.show {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* Modal overlay */
+.url-exporter-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99998;
+    cursor: pointer;
+}
+
+/* Modal content */
+.url-exporter-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    z-index: 99999;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal header */
+.url-exporter-modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 8px 8px 0 0;
+}
+
+.url-exporter-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.url-exporter-close {
+    background: transparent;
+    border: none;
+    font-size: 32px;
+    line-height: 1;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.url-exporter-close:hover {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+/* Progress section */
+.url-exporter-progress {
+    padding: 20px 24px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #23282d;
+    font-weight: 500;
+}
+
+.progress-count {
+    font-size: 13px;
+    color: #646970;
+    font-weight: 600;
+}
+
+.progress-bar-wrapper {
+    width: 100%;
+    height: 24px;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #2271b1, #135e96);
+    transition: width 0.3s ease;
+    border-radius: 12px;
+    position: relative;
+}
+
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Modal body */
+.url-exporter-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 200px;
+}
+
+/* Modal footer */
+.url-exporter-modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    background-color: #f9f9f9;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Info section */
+.url-exporter-info {
+    background-color: #f0f6fc;
+    border: 1px solid #c3d8f0;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.url-exporter-info p {
+    margin: 6px 0;
+    color: #1d2327;
+}
+
+/* Table wrapper */
+.url-exporter-table-wrapper {
+    overflow-x: auto;
+}
+
+/* Table styles */
+.url-exporter-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.url-exporter-table thead {
+    background-color: #f9f9f9;
+}
+
+.url-exporter-table th {
+    text-align: right;
+    padding: 12px;
+    font-weight: 600;
+    color: #23282d;
+    border-bottom: 2px solid #ddd;
+}
+
+.url-exporter-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.url-exporter-table tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+.url-exporter-table .column-title {
+    font-weight: 500;
+    width: 30%;
+}
+
+.url-exporter-table .column-url {
+    width: 40%;
+    word-break: break-all;
+}
+
+.url-exporter-table .column-url a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+.url-exporter-table .column-url a:hover {
+    color: #135e96;
+    text-decoration: underline;
+}
+
+.url-exporter-table .column-date {
+    width: 15%;
+    color: #646970;
+}
+
+.url-exporter-table .column-actions {
+    width: 15%;
+    text-align: center;
+}
+
+/* Loading state */
+.url-exporter-loading {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.url-exporter-loading .spinner {
+    float: none;
+    margin: 0 auto 16px;
+}
+
+.url-exporter-loading p {
+    color: #646970;
+    font-size: 14px;
+}
+
+/* Error state */
+.url-exporter-error {
+    text-align: center;
+    padding: 40px 20px;
+    color: #d63638;
+}
+
+.url-exporter-error .dashicons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+}
+
+.url-exporter-error p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Warning state */
+.url-exporter-warning {
+    background-color: #fcf8e3;
+    border: 1px solid #f0ad4e;
+    border-radius: 4px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.url-exporter-warning .dashicons {
+    color: #f0ad4e;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.url-exporter-warning p {
+    margin: 0;
+    color: #856404;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .url-exporter-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .url-exporter-modal-header,
+    .url-exporter-modal-body,
+    .url-exporter-modal-footer {
+        padding: 16px;
+    }
+    
+    .url-exporter-table th,
+    .url-exporter-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .url-exporter-table .column-title,
+    .url-exporter-table .column-url {
+        width: auto;
+    }
+    
+    .url-exporter-modal-footer {
+        flex-direction: column;
+    }
+    
+    .url-exporter-modal-footer .button {
+        width: 100%;
+    }
+}
+
+/* RTL Support */
+body.rtl .url-exporter-modal-header,
+body.rtl .url-exporter-table th,
+body.rtl .url-exporter-table td {
+    text-align: right;
+}
+
+body.rtl .url-exporter-modal-footer {
+    justify-content: flex-start;
+}
+
+/* Animation improvements */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.url-exporter-modal.show .url-exporter-modal-content {
+    animation: fadeIn 0.2s ease-out;
+}
