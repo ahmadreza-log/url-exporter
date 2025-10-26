@@ -48,10 +48,18 @@ class URL_Exporter {
      * Load plugin textdomain for translations
      */
     public function load_textdomain() {
+        $mofile = dirname(__FILE__) . '/languages/url-exporter-' . get_locale() . '.mo';
+        
+        // Try to load from plugin directory first
+        if (file_exists($mofile)) {
+            load_textdomain('url-exporter', $mofile);
+        }
+        
+        // Fallback to standard load_plugin_textdomain
         load_plugin_textdomain(
             'url-exporter',
             false,
-            dirname(plugin_basename(__FILE__)) . '/languages/'
+            dirname(plugin_basename(__FILE__)) . '/languages'
         );
     }
     
