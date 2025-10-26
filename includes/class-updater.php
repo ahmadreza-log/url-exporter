@@ -72,14 +72,15 @@ class URL_Exporter_Updater {
         $transient_key = 'url_exporter_release_info';
         $cached = get_transient($transient_key);
         
-        if ($cached !== false) {
+        if ($cached !== false && is_object($cached)) {
             return $cached;
         }
         
         $response = wp_remote_get($this->github_api_url, [
             'timeout' => 10,
             'headers' => [
-                'Accept' => 'application/vnd.github.v3+json'
+                'Accept' => 'application/vnd.github.v3+json',
+                'User-Agent' => 'WordPress-URL-Exporter'
             ]
         ]);
         
@@ -87,15 +88,30 @@ class URL_Exporter_Updater {
             return false;
         }
         
-        $body = wp_remote_retrieve_body($response);
-        $data = json_decode($body);
+        $response_code = wp_remote_retrieve_response_code($response);
         
-        if (empty($data)) {
+        // 404 means no releases yet
+        if ($response_code == 404) {
             return false;
         }
         
-        // Cache for 12 hours
-        set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
+        $body = wp_remote_retrieve_body($response);
+        $data = json_decode($body);
+        
+        // Validate response data
+        if (empty($data) || !is_object($data)) {
+            return false;
+        }
+        
+        // Check if it's an error response
+        if (isset($data->message)) {
+            return false;
+        }
+        
+        // Cache for 12 hours only if valid data
+        if (isset($data->tag_name)) {
+            set_transient($transient_key, $data, 12 * HOUR_IN_SECONDS);
+        }
         
         return $data;
     }
@@ -114,9 +130,19 @@ class URL_Exporter_Updater {
             return $transient;
         }
         
+        // Check if release has required properties
+        if (!isset($release->tag_name) || !isset($release->zipball_url)) {
+            return $transient;
+        }
+        
         $plugin_data = $this->get_plugin_data();
         $current_version = $plugin_data['Version'];
         $latest_version = ltrim($release->tag_name, 'v');
+        
+        // Validate version string
+        if (empty($latest_version)) {
+            return $transient;
+        }
         
         // Compare versions
         if (version_compare($current_version, $latest_version, '<')) {
@@ -158,6 +184,11 @@ class URL_Exporter_Updater {
             return $false;
         }
         
+        // Check if release has required properties
+        if (!isset($release->tag_name) || !isset($release->zipball_url)) {
+            return $false;
+        }
+        
         $plugin_data = $this->get_plugin_data();
         
         $info = new stdClass();
@@ -171,10 +202,10 @@ class URL_Exporter_Updater {
         $info->requires = '5.0';
         $info->tested = '6.4';
         $info->requires_php = '7.2';
-        $info->last_updated = $release->published_at;
+        $info->last_updated = isset($release->published_at) ? $release->published_at : '';
         $info->sections = [
             'description' => $plugin_data['Description'],
-            'changelog' => $this->parse_changelog($release->body)
+            'changelog' => $this->parse_changelog(isset($release->body) ? $release->body : '')
         ];
         $info->banners = [];
         
