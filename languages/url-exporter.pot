@@ -1,0 +1,57 @@
+# Copyright (C) 2025 URL Exporter
+# This file is distributed under the same license as the URL Exporter plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: URL Exporter 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/ahmadreza-log/url-exporter/issues\n"
+"POT-Creation-Date: 2025-10-26 12:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit\n"
+"X-Domain: url-exporter\n"
+
+#: url-exporter.php:78
+msgid "Export URLs"
+msgstr ""
+
+#: url-exporter.php:106
+msgid "Loading URLs..."
+msgstr ""
+
+#: url-exporter.php:107
+msgid "Error loading URLs"
+msgstr ""
+
+#: url-exporter.php:108
+msgid "No posts found"
+msgstr ""
+
+#: url-exporter.php:109
+msgid "URL List"
+msgstr ""
+
+#: url-exporter.php:110
+msgid "URL"
+msgstr ""
+
+#: url-exporter.php:146 url-exporter.php:211
+msgid "You do not have permission to access this section"
+msgstr ""
+
+#: url-exporter.php:156 url-exporter.php:226
+msgid "Invalid parameters provided"
+msgstr ""
+
+#: url-exporter.php:162 url-exporter.php:232
+msgid "Taxonomy does not exist"
+msgstr ""
+
+#: url-exporter.php:170 url-exporter.php:240
+msgid "Term not found"
+msgstr ""
+

@@ -35,9 +35,21 @@ class URL_Exporter {
      * Initialize WordPress hooks
      */
     private function init_hooks() {
+        add_action('plugins_loaded', [$this, 'load_textdomain']);
         add_action('admin_init', [$this, 'add_taxonomy_actions']);
         add_action('admin_enqueue_scripts', [$this, 'enqueue_assets']);
         add_action('wp_ajax_url_exporter_get_urls', [$this, 'ajax_get_urls']);
+    }
+    
+    /**
+     * Load plugin textdomain for translations
+     */
+    public function load_textdomain() {
+        load_plugin_textdomain(
+            'url-exporter',
+            false,
+            dirname(plugin_basename(__FILE__)) . '/languages/'
+        );
     }
     
     /**
